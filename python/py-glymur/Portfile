@@ -1,0 +1,31 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-glymur
+version             0.13.8
+revision            0
+
+license             MIT
+platforms           darwin
+supported_archs     noarch
+maintainers         proton.me:jevans667cc
+description         Interface to JPEG 2000 images
+long_description    glymur contains a Python interface to the OpenJPEG \
+                    library which allows one to read and write JPEG 2000 files.
+homepage            https://glymur.readthedocs.io
+master_sites        pypi:g/glymur/
+
+checksums           rmd160  15e368757accb70257d75a3fd221bf7ab3640c75 \
+                    sha256  8aa37faf4a19177ad150bc6146003f9ce33a3e772f10b9085d9904fd6e9c1a8a \
+                    size    42798
+
+python.versions     311 312 313
+if {${name} ne ${subport}} {
+    depends_lib-append  port:openjpeg \
+                        port:tiff \
+                        port:py${python.version}-lxml \
+                        port:py${python.version}-gdal \
+                        port:py${python.version}-numpy
+}
